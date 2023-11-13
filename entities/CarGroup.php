@@ -31,7 +31,7 @@ class CarGroup implements EntityInterface
             ],
             "ClassServiceInt" => null,
             "AddSigns" => "У0",
-            "Tariff" => 8647,
+            "Tariff" => 5000,
             "Tariff2" => null,
             "TariffService" => 848,
             "Carrier" => [

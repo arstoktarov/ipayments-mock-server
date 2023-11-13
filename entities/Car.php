@@ -8,14 +8,14 @@ class Car implements EntityInterface
     public $number = 0;
     public $subType = null;
     private $seats = [
-        "SeatsUndef" => 0,
+        "SeatsUndef" => 4,
         "SeatsDn" => 0,
         "SeatsUp" => 0,
         "SeatsLateralDn" => null,
         "SeatsLateralUp" => null,
         "FreeComp" => 0
     ];
-    private $places = [];
+    private $places = ['001', '002', '003', '004'];
 
     public function __construct($number, $subType)
     {

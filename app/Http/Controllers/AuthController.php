@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -23,8 +24,18 @@ class AuthController extends Controller
     /**
      * @throws ValidationException
      */
-    public function getToken(Request $request)
+    public function getToken(Request $request): JsonResponse
     {
         return response()->json(Hash::make('token'));
+    }
+
+    public function closeWorkSession(Request $request): string
+    {
+        return "";
+    }
+
+    public function openWorkSession(Request $request): string
+    {
+        return "";
     }
 }

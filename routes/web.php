@@ -18,5 +18,7 @@ $router->get('/', function () use ($router) {
 $router->post('/SearchPlaces/SearchCars', ['uses' => 'CarController@searchCars']);
 $router->post('/SearchPlaces/SearchTrains', ['uses' => 'CarController@searchTrains']);
 $router->post('/SearchPlaces/GetTrainRoutes', ['uses' => 'CarController@getTrainRoutes']);
-$router->get('/Login/GetToken', ['uses' => 'AuthController@getToken']);
+$router->get('/Auth/GetToken', ['uses' => 'AuthController@getToken']);
 $router->post('/Login/SetToken', ['uses' => 'AuthController@setToken']);
+$router->post('/Login/CloseWorkSession', ['uses' => 'AuthController@closeWorkSession']);
+$router->get('/Login/OpenWorkSession', ['uses' => 'AuthController@openWorkSession']);

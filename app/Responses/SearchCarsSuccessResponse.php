@@ -16,9 +16,9 @@ class SearchCarsSuccessResponse extends ResponseEntity
 
     function generate(): array
     {
-        $car1 = new Car('1', '32K');
-        $car2 = new Car('1', '32K');
-        $carGroup = new CarGroup('Плацкарт', [$car1, $car2]);
+        $car1 = new Car('1', '32К');
+        $car2 = new Car('1', '32К');
+        $carGroup = new CarGroup('Купе', [$car1, $car2]);
         $train1 = (new Train('031K', [$carGroup]))->toArray();
 
         return [
