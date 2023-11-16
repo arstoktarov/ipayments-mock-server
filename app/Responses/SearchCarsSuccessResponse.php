@@ -16,29 +16,16 @@ class SearchCarsSuccessResponse extends ResponseEntity
 
     function generate(): array
     {
-        $car1 = new Car('1', '32К');
-        $car2 = new Car('1', '32К');
-        $carGroup = new CarGroup('Купе', [$car1, $car2]);
-        $train1 = (new Train('031K', [$carGroup]))->toArray();
+        $trains = include(base_path('data/trains.php'));
 
-        return [
-            "ShowWithoutPlaces" => false,
-            "ForwardDirectionDto" => [
-                "Type" => 0,
-                "PassRoute" => [
-                    "From" => "АЛМАТЫ 1",
-                    "To" => "АКТОГАЙ",
-                    "CodeFrom" => "2700002",
-                    "CodeTo" => "2700670"
-                ],
-                "Trains" => [
-                    [
-                        "Date" => "2023-11-16T00:00:00",
-                        "Train" => $train1
-                    ]
-                ]
-            ],
-            "BackwardDirectionDto" => null
-        ];
+        $trainNumber = $this->request['ForwardDirection']['Train']['Number'];
+
+        foreach ($trains as $train) {
+            if ($train['Number'] === $trainNumber) {
+                return $train['response'];
+            }
+        }
+
+        return [];
     }
 }

@@ -21,7 +21,12 @@
         "psr-4": {
             "App\\": "app/",
             "Entities\\": "entities/"
-        }
+        },
+        "files": [
+            "data/trains.php",
+            "data/train_routes.php",
+            "data/stations.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [

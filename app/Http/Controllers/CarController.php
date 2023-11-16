@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Factories\GetTrainRoutesResponseFactory;
 use App\Factories\SearchCarsResponseFactory;
 use App\Factories\SearchTrainsResponseFactory;
+use App\Services\ScheduleCalculatorService;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -16,10 +18,17 @@ use PHPUnit\Util\Json;
 class CarController extends Controller
 {
 
+    public $scheduleCalculator;
+
+    public function __construct(ScheduleCalculatorService $scheduleCalculator)
+    {
+        $this->scheduleCalculator = $scheduleCalculator;
+    }
+
     /**
      * @throws ValidationException
      */
-    public function searchTrains(Request $request, SearchTrainsResponseFactory $responseFactory): JsonResponse
+    public function searchTrains(Request $request, SearchTrainsResponseFactory $responseFactory)
     {
         $this->validate($request, [
             'ShowWithoutPlaces'                    => 'boolean',
@@ -41,6 +50,7 @@ class CarController extends Controller
             return response()->json([], 500);
         }
     }
+
 
     public function searchCars(Request $request, SearchCarsResponseFactory $responseFactory): JsonResponse
     {

@@ -2,11 +2,25 @@
 
 namespace App\Responses;
 
+use Illuminate\Http\Request;
+
 class GetTrainRoutesDefaultResponse extends ResponseEntity
 {
+    protected $type;
+
+    public function __construct($type, Request $request)
+    {
+        $this->type = $type;
+        parent::__construct($request);
+    }
 
     function generate(): array
     {
+        $trainRoutes = include(base_path('data/train_routes.php'));
+        if (array_key_exists($this->type, $trainRoutes)) {
+            return $trainRoutes[$this->type];
+        }
+
         return [
             "TrainRoute" => [
                 "Number" => "031Х",
